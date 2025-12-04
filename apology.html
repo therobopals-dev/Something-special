@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>I'm Sorry 💗</title>
+<style>
+  :root{
+    --bg:#fff6fb;
+    --card:#fff;
+    --accent:#ff6fa3;
+    --muted:#6b6b6b;
+  }
+  *{box-sizing:border-box;font-family: "Poppins", Arial, sans-serif}
+  body{margin:0;background:linear-gradient(180deg,#fff6fb,#fff1f6);color:#222}
+  .wrap{max-width:820px;margin:28px auto;padding:20px}
+  .card{background:var(--card);border-radius:18px;padding:22px;box-shadow:0 18px 40px rgba(21,12,33,0.06);text-align:center}
+  h1{color:var(--accent);margin:6px 0 8px;font-size:28px}
+  p.lead{color:var(--muted);margin:0 0 18px;line-height:1.5}
+  .kitten{
+    width:220px;height:220px;border-radius:18px;overflow:hidden;margin:12px auto;
+    box-shadow:0 12px 30px rgba(0,0,0,0.12);border:6px solid rgba(255,255,255,0.8);
+    transform:translateY(0); animation:float 3.5s ease-in-out infinite;
+  }
+  .kitten img{width:100%;height:100%;object-fit:cover;display:block}
+  @keyframes float{
+    0%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+    100%{transform:translateY(0)}
+  }
+  .apologyText{
+    background:linear-gradient(180deg,rgba(255,111,160,0.06),rgba(255,111,160,0.02));
+    padding:14px;border-radius:12px;margin:12px auto;max-width:680px;color:#2b2b2b;
+    box-shadow:0 8px 20px rgba(255,111,160,0.03);
+  }
+  .apologyText strong{color:var(--accent)}
+  .btns{display:flex;gap:12px;justify-content:center;margin-top:18px;flex-wrap:wrap}
+  .btn{background:var(--accent);color:white;padding:10px 18px;border-radius:12px;border:none;cursor:pointer;font-weight:600;box-shadow:0 8px 20px rgba(255,111,160,0.18)}
+  .ghost{background:transparent;border:1px solid rgba(0,0,0,0.06);padding:10px 18px;border-radius:12px;color:var(--muted);cursor:pointer}
+  footer{margin-top:18px;color:var(--muted);font-size:13px}
+  @media(max-width:520px){
+    .kitten{width:180px;height:180px}
+    h1{font-size:22px}
+  }
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>I'm Really Sorry, Phuspi 💛</h1>
+
+      <div class="kitten" aria-hidden="true">
+        <!-- save the kitten file as images/kitten.jpg -->
+        <img src="images/kitten.jpg" alt="cute kitten">
+      </div>
+
+      <p class="lead">This little kitten is me — shy, sorry and hoping you'll forgive. I didn't mean to hurt you. I miss the way we used to laugh and talk. 🥺</p>
+
+      <div class="apologyText">
+        <p><strong>Short & honest:</strong><br>
+        I'm sorry for my mistakes. My feelings were always real. I respect your space — I just wanted you to know that you mattered to me, and you still do.</p>
+      </div>
+
+      <div class="btns">
+        <button class="btn" onclick="openMessage()">💬 Send a Gentle Note</button>
+        <button class="ghost" onclick="goBack()">⬅ Back</button>
+      </div>
+
+      <footer>Made with care — no pressure. Just my heart. 💗</footer>
+    </div>
+  </div>
+
+<script>
+  function openMessage(){
+    // small inline gentle prompt that doesn't spam — keeps it dignified
+    const ok = confirm("Do you want to send a soft message now? (This will copy a gentle text you can paste.)");
+    if(!ok) return;
+    const txt = "Hey — I respect your space. I just wanted to say I'm sorry and I hope you're okay. If you ever want to talk, I'm here. — A";
+    navigator.clipboard?.writeText(txt).then(()=> {
+      alert("Gentle text copied to clipboard. Paste it in chat whenever you're ready.");
+    }).catch(()=> {
+      prompt("Copy this gentle text:", txt);
+    });
+  }
+  function goBack(){ window.location.href = 'index.html'; }
+</script>
+</body>
+</html>
