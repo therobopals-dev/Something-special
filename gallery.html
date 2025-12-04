@@ -33,6 +33,27 @@
     </style>
 </head>
 <body>
+    
+    <!-- 🎵 Background Music -->
+    <audio id="bg-music" src="music.mp3" loop></audio>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const music = document.getElementById("bg-music");
+
+            // Try autoplay after page load
+            setTimeout(() => {
+                music.play().catch(() => {
+                    console.log("Autoplay blocked — will start on first tap.");
+                });
+            }, 500);
+
+            // If autoplay blocked, first tap will start the music
+            document.body.addEventListener("click", () => {
+                music.play();
+            }, { once: true });
+        });
+    </script>
 
     <h1>Our Cute Memories 💗</h1>
 
