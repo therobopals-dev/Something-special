@@ -29,9 +29,61 @@
             color: #ff5a8a;
             text-decoration: none;
         }
+/* small invisible music hint button for mobile users (appears only if autoplay blocked) */
+        #musicHint {
+          display:none;
+          margin-top:14px;
+          background:#ff5a8a;
+          color:#fff;
+          padding:10px 16px;
+          border-radius:12px;
+          border:none;
+          font-weight:600;
+          cursor:pointer;
+        }      
     </style>
 </head>
 <body>
+
+    <!-- 🎵 Background music file: put your MP3 here named music.mp3 (or change src accordingly) -->
+    <audio id="bg-music" src="music1.MP3" loop></audio>
+
+    <script>
+      // Try autoplay, fallback to first touch if blocked
+      document.addEventListener("DOMContentLoaded", function () {
+        const music = document.getElementById("bg-music");
+
+        // tiny delay then try to autoplay
+        setTimeout(() => {
+          music.play().catch(() => {
+            // autoplay blocked — show a small hint button to start music manually
+            showMusicHint();
+            console.log("Autoplay blocked — tap to start music.");
+          });
+        }, 400);
+
+        // also if user taps anywhere, start music (useful on mobile)
+        document.body.addEventListener("click", () => {
+          music.play().catch(()=>{/* ignore */});
+        }, { once: true });
+      });
+
+      function showMusicHint() {
+        let btn = document.getElementById('musicHint');
+        if(!btn) {
+          btn = document.createElement('button');
+          btn.id = 'musicHint';
+          btn.innerText = 'Tap to play music 🎵';
+          btn.onclick = () => {
+            document.getElementById('bg-music').play();
+            btn.style.display = 'none';
+          };
+          document.body.appendChild(btn);
+        } else {
+          btn.style.display = 'inline-block';
+        }
+      }
+    </script>
 
     <h1>One Last Message 💛</h1>
     
